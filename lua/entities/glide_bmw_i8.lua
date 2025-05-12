@@ -41,6 +41,8 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
+		self:SetSteerConeMaxSpeed(500)
+
 		self:SetDifferentialRatio(1.1)
 		self:SetPowerDistribution(-0)
 		self:SetMinRPM(150)

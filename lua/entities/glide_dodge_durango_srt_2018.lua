@@ -44,6 +44,8 @@ if SERVER then
 		self:SetHeadlightColor(Vector(1, 1, 1))
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
+		self:SetSteerConeMaxSpeed(600)
+		
 		self:SetSpringStrength(2500)
 		self:SetSpringDamper(7000)
 
