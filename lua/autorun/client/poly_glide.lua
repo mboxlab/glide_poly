@@ -1,0 +1,5 @@
+list.Set("GlideCategories", "Poly - Hatchback", {name = "Poly - Hatchback", icon = "glide/icons/car.png"})
+list.Set("GlideCategories", "Poly - Muscle", {name = "Poly - Muscle", icon = "glide/icons/car.png"})
+list.Set("GlideCategories", "Poly - Sedan", {name = "Poly - Sedan", icon = "glide/icons/car.png"})
+list.Set("GlideCategories", "Poly - Sport", {name = "Poly - Sport", icon = "glide/icons/car.png"})
+list.Set("GlideCategories", "Poly - Suv", {name = "Poly - Suv", icon = "glide/icons/car.png"})
