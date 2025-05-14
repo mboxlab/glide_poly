@@ -13,22 +13,17 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          ref: lua
-          path: project
-
       - name: Remove Non-content
         run: |
-          rm -rf $GITHUB_WORKSPACE/project/.git*
-          rm -fv $GITHUB_WORKSPACE/project/LICENSE*
-          rm -fv $GITHUB_WORKSPACE/project/README*
+          rm -rf $GITHUB_WORKSPACE/.git*
+          rm -rf $GITHUB_WORKSPACE/.github*
+          rm -fv $GITHUB_WORKSPACE/LICENSE*
+          rm -fv $GITHUB_WORKSPACE/README*
 
-      - uses: CFC-Servers/gmod-upload@master
+      - uses: m00nl1ght-dev/steam-workshop-deploy@v3
         with:
-          id: 3480565494
-          changelog: ${{ inputs.changelog }}
-        env:
-          STEAM_USERNAME: ${{ secrets.WORKSHOP_UPLOADER_USERNAME }}
-          STEAM_PASSWORD: ${{ secrets.WORKSHOP_UPLOADER_PASSWORD }}
+          username: ${{ secrets.STEAM_USERNAME }}          
+          configVdf: ${{ secrets.STEAM_CONFIG_VDF }}
+          path: build
+          appId: 4000
+          publishedFileId: 3480565494
