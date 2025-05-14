@@ -12,6 +12,12 @@ jobs:
   workshopUpload:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: lua
+          path: project
+
       - name: Remove Non-content
         run: |
           rm -rf $GITHUB_WORKSPACE/project/.git*
