@@ -1,0 +1,27 @@
+name: Deploy to Workshop
+
+on:
+  workflow_dispatch:
+    inputs:
+      changelog:
+        type: string
+        required: false
+        default: "Update to latest Git commit"
+
+jobs:
+  workshopUpload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remove Non-content
+        run: |
+          rm -rf $GITHUB_WORKSPACE/project/.git*
+          rm -fv $GITHUB_WORKSPACE/project/LICENSE*
+          rm -fv $GITHUB_WORKSPACE/project/README*
+
+      - uses: m00nl1ght-dev/steam-workshop-deploy@v3
+        with:
+          username: ${{ secrets.STEAM_USERNAME }}          
+          configVdf: ${{ secrets.STEAM_CONFIG_VDF }}
+          path: build
+          appId: 4000
+          publishedFileId: 3480565494
