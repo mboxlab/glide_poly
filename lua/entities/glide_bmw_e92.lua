@@ -53,12 +53,12 @@ if SERVER then
 		self:SetSpringStrength(1500)
 		self:SetSteerConeMaxSpeed(800)
 
-		self:SetDifferentialRatio(1.1)
+		self:SetDifferentialRatio(0.7)
 		self:SetPowerDistribution(-0)
 		self:SetMinRPM(750)
-		self:SetMaxRPM(6500)
-		self:SetMinRPMTorque(2200)
-		self:SetMaxRPMTorque(6300)
+		self:SetMaxRPM(9500)
+		self:SetMinRPMTorque(9200)
+		self:SetMaxRPMTorque(12300)
 
 		self:SetForwardTractionMax(4500)
 		self:SetSideTractionMultiplier(25)
