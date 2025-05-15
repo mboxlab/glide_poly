@@ -3,3 +3,4 @@ list.Set("GlideCategories", "Poly - Muscle", {name = "Poly - Muscle", icon = "gl
 list.Set("GlideCategories", "Poly - Sedan", {name = "Poly - Sedan", icon = "glide/icons/car.png"})
 list.Set("GlideCategories", "Poly - Sport", {name = "Poly - Sport", icon = "glide/icons/car.png"})
 list.Set("GlideCategories", "Poly - Suv", {name = "Poly - Suv", icon = "glide/icons/car.png"})
+list.Set("GlideCategories", "Poly - Truck", {name = "Poly - Truck", icon = "glide/icons/car.png"})
