@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/evo_x.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 3
 	return localEyePos
 end
 
@@ -25,7 +25,7 @@ if CLIENT then
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("i4_redtop")
 	end
 end
 
@@ -45,14 +45,15 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
-		self:SetSteerConeMaxSpeed(800)
+		self:SetBrakePower(6000)
+		self:SetSteerConeMaxSpeed(1300)
 
-		self:SetDifferentialRatio(1.1)
-		self:SetPowerDistribution(-0)
+		self:SetDifferentialRatio(0.7)
+		self:SetPowerDistribution(0)
 		self:SetMinRPM(750)
-		self:SetMaxRPM(6500)
-		self:SetMinRPMTorque(2200)
-		self:SetMaxRPMTorque(6300)
+		self:SetMaxRPM(7000)
+		self:SetMinRPMTorque(5900)
+		self:SetMaxRPMTorque(9000)
 
 		self:SetForwardTractionMax(4500)
 		self:SetSideTractionMultiplier(25)

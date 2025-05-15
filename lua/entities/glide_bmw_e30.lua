@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/bmw_e30.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 5
 	return localEyePos
 end
 
@@ -29,7 +29,7 @@ if CLIENT then
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("i4_redtop")
 	end
 end
 
@@ -49,18 +49,18 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
-		self:SetSteerConeMaxSpeed(800)
+		self:SetSteerConeMaxSpeed(1200)
 
-		self:SetDifferentialRatio(0.65)
+		self:SetDifferentialRatio(0.7)
 		self:SetPowerDistribution(-1)
 		self:SetMinRPM(1000)
 		self:SetMaxRPM(6500)
-		self:SetMinRPMTorque(1000)
-		self:SetMaxRPMTorque(5800)
+		self:SetMinRPMTorque(5000)
+		self:SetMaxRPMTorque(8800)
 
 		self:SetForwardTractionMax(4500)
 		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(1700)
+		self:SetSideTractionMax(3700)
 
 		self:CreateSeat(Vector(Vector(-25, 15, 18)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(0, -15.5, 15), Angle(0, 270, 18), Vector(0, -80, 0), true)

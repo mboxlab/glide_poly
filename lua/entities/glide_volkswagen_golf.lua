@@ -45,16 +45,17 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
+		self:SetBrakePower(7000)
 		self:SetSteerConeMaxSpeed(800)
 
-		self:SetDifferentialRatio(1.1)
+		self:SetDifferentialRatio(0.8)
 		self:SetPowerDistribution(0.9)
-		self:SetMinRPM(750)
-		self:SetMaxRPM(6500)
-		self:SetMinRPMTorque(2200)
-		self:SetMaxRPMTorque(6300)
+		self:SetMinRPM(900)
+		self:SetMaxRPM(7000)
+		self:SetMinRPMTorque(4000)
+		self:SetMaxRPMTorque(7800)
 
-		self:SetForwardTractionMax(4500)
+		self:SetForwardTractionMax(6500)
 		self:SetSideTractionMultiplier(25)
 		self:SetSideTractionMax(2700)
 

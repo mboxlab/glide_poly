@@ -25,7 +25,7 @@ if CLIENT then
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("v12_aventador")
 	end
 end
 
@@ -45,18 +45,20 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
-		self:SetSteerConeMaxSpeed(500)
+		self:SetSteerConeMaxSpeed(1200)
+		self:SetBrakePower(9000)
+		self:SetFastTransmission(true)
 
-		self:SetDifferentialRatio(1.1)
+		self:SetDifferentialRatio(0.6)
 		self:SetPowerDistribution(-0.9)
 		self:SetMinRPM(750)
-		self:SetMaxRPM(8300)
-		self:SetMinRPMTorque(2200)
-		self:SetMaxRPMTorque(6300)
+		self:SetMaxRPM(8700)
+		self:SetMinRPMTorque(10200)
+		self:SetMaxRPMTorque(16300)
 
-		self:SetForwardTractionMax(4500)
+		self:SetForwardTractionMax(8500)
 		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(2700)
+		self:SetSideTractionMax(6700)
 
 		self:CreateSeat(Vector(Vector(-13, 18, 5)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(10, -18.5, 5), Angle(0, 270, 18), Vector(0, -80, 0), true)

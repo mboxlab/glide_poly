@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/porsche_cayenne.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 5
 	return localEyePos
 end
 
@@ -19,13 +19,19 @@ if CLIENT then
 	ENT.HornSound = "glide/horns/car_horn_med_9.wav"
 
 	ENT.EngineSmokeMaxZVel = 5
-	ENT.ExhaustOffsets = {{pos = Vector(-102, -24, 16)}, {pos = Vector(-102, 24, 16)}}
+	ENT.ExhaustOffsets = {
+		{pos = Vector(-102, -24, 16)},
+		{pos = Vector(-102, 24, 16)},
+		{pos = Vector(-100, 28, 16)},
+		{pos = Vector(-100, -28, 16)},
+		--
+	}
 
 	ENT.EngineFireOffsets = {{offset = Vector(60, 0, 20), angle = Angle()}}
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("v8_cayenne")
 	end
 end
 
@@ -44,21 +50,23 @@ if SERVER then
 		self:SetHeadlightColor(Vector(1, 1, 1))
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
-		self:SetSteerConeMaxSpeed(600)
-		
+		self:SetSteerConeMaxSpeed(1000)
+
+		self:SetBrakePower(9000)
+		self:SetFastTransmission(true)
 		self:SetSpringStrength(2500)
 		self:SetSpringDamper(7000)
-		
-		self:SetDifferentialRatio(1.1)
+
+		self:SetDifferentialRatio(0.7)
 		self:SetPowerDistribution(-0)
 		self:SetMinRPM(750)
 		self:SetMaxRPM(6500)
-		self:SetMinRPMTorque(3200)
-		self:SetMaxRPMTorque(6300)
+		self:SetMinRPMTorque(10200)
+		self:SetMaxRPMTorque(14300)
 
 		self:SetForwardTractionMax(4500)
 		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(2700)
+		self:SetSideTractionMax(3700)
 
 		self:CreateSeat(Vector(Vector(-13, 19, 23)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(7, -19.5, 23), Angle(0, 270, 18), Vector(0, -80, 0), true)

@@ -31,7 +31,7 @@ if CLIENT then
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("v8_c63")
 	end
 end
 
@@ -50,21 +50,23 @@ if SERVER then
 		self:SetHeadlightColor(Vector(1, 1, 1))
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
-		self:SetSteerConeMaxSpeed(600)
+		self:SetSteerConeMaxSpeed(1000)
 		
+		self:SetBrakePower(9000)
+		self:SetFastTransmission(true)
 		self:SetSpringStrength(2500)
 		self:SetSpringDamper(7000)
 
-		self:SetDifferentialRatio(1.1)
+		self:SetDifferentialRatio(0.7)
 		self:SetPowerDistribution(-0)
 		self:SetMinRPM(750)
 		self:SetMaxRPM(6500)
-		self:SetMinRPMTorque(6200)
-		self:SetMaxRPMTorque(6300)
+		self:SetMinRPMTorque(12200)
+		self:SetMaxRPMTorque(16300)
 
 		self:SetForwardTractionMax(4500)
 		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(2700)
+		self:SetSideTractionMax(3700)
 
 		self:CreateSeat(Vector(Vector(-13, 19, 23)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(7, -19.5, 23), Angle(0, 270, 18), Vector(0, -80, 0), true)

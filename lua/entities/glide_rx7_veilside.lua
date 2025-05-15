@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/rx7_veilside.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 5
 	return localEyePos
 end
 
@@ -25,7 +25,7 @@ if CLIENT then
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("i6_supra")
 	end
 end
 
@@ -47,14 +47,14 @@ if SERVER then
 		self:SetSpringStrength(1500)
 		self:SetSteerConeMaxSpeed(800)
 
-		self:SetDifferentialRatio(1.1)
+		self:SetDifferentialRatio(0.7)
 		self:SetPowerDistribution(-0.9)
-		self:SetMinRPM(750)
-		self:SetMaxRPM(6500)
-		self:SetMinRPMTorque(2200)
-		self:SetMaxRPMTorque(6300)
+		self:SetMinRPM(900)
+		self:SetMaxRPM(9500)
+		self:SetMinRPMTorque(5000)
+		self:SetMaxRPMTorque(9800)
 
-		self:SetForwardTractionMax(4500)
+		self:SetForwardTractionMax(6500)
 		self:SetSideTractionMultiplier(25)
 		self:SetSideTractionMax(2700)
 

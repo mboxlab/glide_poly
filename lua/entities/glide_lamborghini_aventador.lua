@@ -30,7 +30,7 @@ if CLIENT then
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("infernus")
+		stream:LoadPreset("v12_aventador")
 	end
 end
 

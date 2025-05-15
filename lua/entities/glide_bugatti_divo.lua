@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/bugatti_divo.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 5
 	return localEyePos
 end
 
@@ -25,7 +25,7 @@ if CLIENT then
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("v12_aventador")
 	end
 end
 
@@ -45,16 +45,17 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
-		self:SetSteerConeMaxSpeed(500)
+		self:SetBrakePower(5000)
+		self:SetSteerConeMaxSpeed(1200)
 
-		self:SetDifferentialRatio(1.1)
-		self:SetPowerDistribution(-0)
+		self:SetDifferentialRatio(0.7)
+		self:SetPowerDistribution(-1)
 		self:SetMinRPM(750)
-		self:SetMaxRPM(9500)
-		self:SetMinRPMTorque(2200)
-		self:SetMaxRPMTorque(8300)
+		self:SetMaxRPM(12000)
+		self:SetMinRPMTorque(10000)
+		self:SetMaxRPMTorque(16000)
 
-		self:SetForwardTractionMax(4500)
+		self:SetForwardTractionMax(12000)
 		self:SetSideTractionMultiplier(25)
 		self:SetSideTractionMax(2700)
 

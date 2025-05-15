@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/nissan_gtr_r35.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 2
 	return localEyePos
 end
 
@@ -19,13 +19,17 @@ if CLIENT then
 	ENT.HornSound = "glide/horns/car_horn_med_9.wav"
 
 	ENT.EngineSmokeMaxZVel = 5
-	ENT.ExhaustOffsets = {{pos = Vector(-100, 28, 15)}}
+	ENT.ExhaustOffsets = {
+		{pos = Vector(-100, 24, 15)},
+		{pos = Vector(-96, 31, 15)},
+		--
+	}
 
 	ENT.EngineFireOffsets = {{offset = Vector(60, 0, 20), angle = Angle()}}
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("v8_c63")
 	end
 end
 
@@ -45,16 +49,17 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
-		self:SetSteerConeMaxSpeed(500)
+		self:SetSteerConeMaxSpeed(800)
+		self:SetTurboCharged(true)
 
-		self:SetDifferentialRatio(1.1)
-		self:SetPowerDistribution(-0.9)
+		self:SetDifferentialRatio(0.75)
+		self:SetPowerDistribution(-0.2)
 		self:SetMinRPM(750)
 		self:SetMaxRPM(8300)
-		self:SetMinRPMTorque(2200)
-		self:SetMaxRPMTorque(6300)
+		self:SetMinRPMTorque(10200)
+		self:SetMaxRPMTorque(14300)
 
-		self:SetForwardTractionMax(4500)
+		self:SetForwardTractionMax(5000)
 		self:SetSideTractionMultiplier(25)
 		self:SetSideTractionMax(2700)
 

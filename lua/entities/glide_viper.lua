@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/viper.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 5
 	return localEyePos
 end
 
@@ -19,13 +19,17 @@ if CLIENT then
 	ENT.HornSound = "glide/horns/car_horn_med_9.wav"
 
 	ENT.EngineSmokeMaxZVel = 5
-	ENT.ExhaustOffsets = {{pos = Vector(-35, -45, 10)}, {pos = Vector(-35, 45, 10)}}
+	ENT.ExhaustOffsets = {
+		{pos = Vector(-35, -45, 10), ang = Angle(0, 45, 0)},
+		{pos = Vector(-35, 45, 10), ang = Angle(0, -45, 0)},
+		--
+	}
 
 	ENT.EngineFireOffsets = {{offset = Vector(60, 0, 20), angle = Angle()}}
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("v10_bmw")
 	end
 end
 
@@ -45,16 +49,16 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
-		self:SetSteerConeMaxSpeed(800)
+		self:SetSteerConeMaxSpeed(1200)
 
-		self:SetDifferentialRatio(1.1)
+		self:SetDifferentialRatio(0.7)
 		self:SetPowerDistribution(-0.9)
 		self:SetMinRPM(750)
-		self:SetMaxRPM(6500)
-		self:SetMinRPMTorque(2200)
-		self:SetMaxRPMTorque(6300)
+		self:SetMaxRPM(8000)
+		self:SetMinRPMTorque(8900)
+		self:SetMaxRPMTorque(12300)
 
-		self:SetForwardTractionMax(4500)
+		self:SetForwardTractionMax(6500)
 		self:SetSideTractionMultiplier(25)
 		self:SetSideTractionMax(2700)
 

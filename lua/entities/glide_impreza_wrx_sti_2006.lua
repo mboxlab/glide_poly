@@ -25,7 +25,7 @@ if CLIENT then
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("i4_redtop")
 	end
 end
 
@@ -45,16 +45,16 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
-		self:SetSteerConeMaxSpeed(800)
+		self:SetSteerConeMaxSpeed(1200)
 
-		self:SetDifferentialRatio(1.1)
-		self:SetPowerDistribution(-0)
-		self:SetMinRPM(500)
-		self:SetMaxRPM(8000)
-		self:SetMinRPMTorque(1000)
-		self:SetMaxRPMTorque(6800)
+		self:SetDifferentialRatio(0.7)
+		self:SetPowerDistribution(0)
+		self:SetMinRPM(750)
+		self:SetMaxRPM(7000)
+		self:SetMinRPMTorque(6900)
+		self:SetMaxRPMTorque(8300)
 
-		self:SetForwardTractionMax(4500)
+		self:SetForwardTractionMax(5500)
 		self:SetSideTractionMultiplier(25)
 		self:SetSideTractionMax(2700)
 

@@ -19,13 +19,19 @@ if CLIENT then
 	ENT.HornSound = "glide/horns/car_horn_med_9.wav"
 
 	ENT.EngineSmokeMaxZVel = 5
-	ENT.ExhaustOffsets = {{pos = Vector(-100, -30, 16)}, {pos = Vector(-100, 30, 16)}}
+	ENT.ExhaustOffsets = {
+		{pos = Vector(-100, -29, 18)},
+		{pos = Vector(-95, -35, 18)},
+		{pos = Vector(-100, 29, 18)},
+		{pos = Vector(-95, 35, 18)},
+		--
+	}
 
 	ENT.EngineFireOffsets = {{offset = Vector(60, 0, 20), angle = Angle()}}
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("v10_gallardo")
 	end
 end
 
@@ -45,18 +51,18 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
-		self:SetSteerConeMaxSpeed(500)
+		self:SetSteerConeMaxSpeed(1200)
 
-		self:SetDifferentialRatio(1.1)
-		self:SetPowerDistribution(-0.9)
-		self:SetMinRPM(750)
-		self:SetMaxRPM(8500)
-		self:SetMinRPMTorque(2200)
-		self:SetMaxRPMTorque(6300)
+		self:SetDifferentialRatio(0.7)
+		self:SetPowerDistribution(-1)
+		self:SetMinRPM(1000)
+		self:SetMaxRPM(6500)
+		self:SetMinRPMTorque(5000)
+		self:SetMaxRPMTorque(8800)
 
 		self:SetForwardTractionMax(4500)
 		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(2700)
+		self:SetSideTractionMax(3700)
 
 		self:CreateSeat(Vector(Vector(-23, 17, 10)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(-8, -17.5, 12), Angle(0, 270, 18), Vector(0, -80, 0), true)

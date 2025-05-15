@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/rx7.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 5
 	return localEyePos
 end
 
@@ -19,13 +19,13 @@ if CLIENT then
 	ENT.HornSound = "glide/horns/car_horn_med_9.wav"
 
 	ENT.EngineSmokeMaxZVel = 5
-	ENT.ExhaustOffsets = {{pos = Vector(-105, -19, 12)}, {pos = Vector(-105, 19, 12)}}
+	ENT.ExhaustOffsets = {}
 
 	ENT.EngineFireOffsets = {{offset = Vector(60, 0, 20), angle = Angle()}}
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("i6_supra")
 	end
 end
 
@@ -47,16 +47,17 @@ if SERVER then
 		self:SetSpringStrength(1500)
 		self:SetSteerConeMaxSpeed(800)
 
-		self:SetDifferentialRatio(1.1)
-		self:SetPowerDistribution(-1)
-		self:SetMinRPM(2000)
-		self:SetMaxRPM(8500)
-		self:SetMinRPMTorque(2000)
-		self:SetMaxRPMTorque(8500)
+		self:SetDifferentialRatio(0.7)
+		self:SetPowerDistribution(-0.9)
+		self:SetMinRPM(900)
+		self:SetMaxRPM(9500)
+		self:SetMinRPMTorque(4000)
+		self:SetMaxRPMTorque(7800)
 
-		self:SetForwardTractionMax(4500)
+		self:SetForwardTractionMax(6500)
 		self:SetSideTractionMultiplier(25)
 		self:SetSideTractionMax(2700)
+
 
 		self:CreateSeat(Vector(Vector(-28, 17, 18)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(-8, -17.5, 18), Angle(0, 270, 18), Vector(0, -80, 0), true)

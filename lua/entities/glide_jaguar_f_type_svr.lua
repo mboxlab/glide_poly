@@ -19,7 +19,13 @@ if CLIENT then
 	ENT.HornSound = "glide/horns/car_horn_med_9.wav"
 
 	ENT.EngineSmokeMaxZVel = 5
-	ENT.ExhaustOffsets = {{pos = Vector(-100, -19, 17)}, {pos = Vector(-100, 19, 17)}}
+	ENT.ExhaustOffsets = {
+		{pos = Vector(-100, -18, 15)},
+		{pos = Vector(-99, -22, 15)},
+		{pos = Vector(-100, 18, 15)},
+		{pos = Vector(-99, 22, 15)},
+		--
+	}
 
 	ENT.EngineFireOffsets = {{offset = Vector(60, 0, 20), angle = Angle()}}
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
@@ -45,16 +51,16 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
-		self:SetSteerConeMaxSpeed(500)
+		self:SetSteerConeMaxSpeed(1200)
 
-		self:SetDifferentialRatio(1.1)
+		self:SetDifferentialRatio(0.7)
 		self:SetPowerDistribution(-0.9)
 		self:SetMinRPM(750)
-		self:SetMaxRPM(8300)
-		self:SetMinRPMTorque(2200)
-		self:SetMaxRPMTorque(6300)
+		self:SetMaxRPM(8000)
+		self:SetMinRPMTorque(6900)
+		self:SetMaxRPMTorque(9300)
 
-		self:SetForwardTractionMax(4500)
+		self:SetForwardTractionMax(5500)
 		self:SetSideTractionMultiplier(25)
 		self:SetSideTractionMax(2700)
 

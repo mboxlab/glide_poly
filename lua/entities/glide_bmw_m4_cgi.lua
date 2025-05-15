@@ -31,7 +31,7 @@ if CLIENT then
 	ENT.Headlights = {{offset = Vector(110, 30, 15)}, {offset = Vector(110, -30, 15)}}
 
 	function ENT:OnCreateEngineStream(stream)
-		stream:LoadPreset("insurgent")
+		stream:LoadPreset("v10_bmw")
 	end
 end
 
@@ -51,16 +51,17 @@ if SERVER then
 		self:SetSteerConeChangeRate(25)
 		self:SetCounterSteer(0.18)
 		self:SetSpringStrength(1500)
-		self:SetSteerConeMaxSpeed(800)
+		self:SetBrakePower(6000)
+		self:SetSteerConeMaxSpeed(1300)
 
-		self:SetDifferentialRatio(0.5)
+		self:SetDifferentialRatio(0.7)
 		self:SetPowerDistribution(-0.4)
 		self:SetMinRPM(750)
-		self:SetMaxRPM(8500)
-		self:SetMinRPMTorque(7200)
-		self:SetMaxRPMTorque(10300)
+		self:SetMaxRPM(8000)
+		self:SetMinRPMTorque(9900)
+		self:SetMaxRPMTorque(12000)
 
-		self:SetForwardTractionMax(4500)
+		self:SetForwardTractionMax(8500)
 		self:SetSideTractionMultiplier(25)
 		self:SetSideTractionMax(2700)
 
