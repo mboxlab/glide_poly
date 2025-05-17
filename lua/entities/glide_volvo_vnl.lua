@@ -9,7 +9,8 @@ ENT.ChassisModel = "models/simpoly/volvo_vnl.mdl"
 ENT.MaxChassisHealth = 2000
 
 if CLIENT then
-	ENT.CameraOffset = Vector(-500, 0, 140)
+	ENT.CameraOffset = Vector(-500, 0, 0)
+	ENT.CameraCenterOffset = Vector(0, 0, 140)
 	ENT.CameraTrailerDistanceMultiplier = 0.65
 
 	ENT.StartSound = "Glide.Engine.TruckStart"
@@ -48,6 +49,11 @@ if SERVER then
 
 	ENT.BurnoutForce = 12
 	ENT.UnflipForce = 6
+	function ENT:InitializePhysics()
+		self:SetSolid(SOLID_VPHYSICS)
+		self:SetMoveType(MOVETYPE_VPHYSICS)
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(90, 0, 35))
+	end
 
 	ENT.AirControlForce = Vector(0.1, 0.05, 0.1) -- Roll, pitch, yaw
 	ENT.AirMaxAngularVelocity = Vector(100, 100, 150) -- Roll, pitch, yaw
