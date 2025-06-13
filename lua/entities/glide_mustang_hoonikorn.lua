@@ -8,8 +8,8 @@ ENT.GlideCategory = "Poly - Muscle"
 ENT.ChassisModel = "models/simpoly/mustang_hoonikorn.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
-	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[1] = localEyePos[1] + 5
+	localEyePos[3] = localEyePos[3] + 3
 	return localEyePos
 end
 
@@ -63,7 +63,7 @@ if SERVER then
 		self:SetSideTractionMultiplier(25)
 		self:SetSideTractionMax(2700)
 
-		self:CreateSeat(Vector(Vector(-23, 17, 13)), Angle(0, 270, 2), Vector(0, 80, 0), true)
+		self:CreateSeat(Vector(Vector(-23, 16, 12)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(-3, -17.5, 14), Angle(0, 270, 18), Vector(0, -80, 0), true)
 		-- Front left
 		self:CreateWheel(Vector(62.638401031494, 34.2214012146, 23), {

@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/lamborghini_aventador_lp_750_4_super_veloce_r
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 5
 	return localEyePos
 end
 

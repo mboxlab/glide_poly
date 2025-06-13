@@ -55,6 +55,7 @@ if SERVER then
 		self:SetSideTractionMax(2700)
 
 		self:CreateSeat(Vector(Vector(-28, 17, 10)), Angle(0, 270, 2), Vector(0, 80, 0), true)
+		self:CreateSeat(Vector(Vector(-8, -17, 10)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 
 		-- Front left
 		self:CreateWheel(Vector(62.232299804688, 35.148101806641, 24),

@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/lamborghini_murcielago.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 3
 	return localEyePos
 end
 

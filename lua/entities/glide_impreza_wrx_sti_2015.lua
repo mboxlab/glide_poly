@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/impreza_wrx_sti_2015.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 5
 	return localEyePos
 end
 

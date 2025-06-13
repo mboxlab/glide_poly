@@ -9,7 +9,7 @@ ENT.ChassisModel = "models/simpoly/tesla_roadster_2020.mdl"
 
 function ENT:GetFirstPersonOffset(_, localEyePos)
 	localEyePos[1] = localEyePos[1] + 8
-	localEyePos[3] = localEyePos[3] + 8
+	localEyePos[3] = localEyePos[3] + 5
 	return localEyePos
 end
 
@@ -56,6 +56,7 @@ if SERVER then
 		self:SetSideTractionMax(2700)
 
 		self:CreateSeat(Vector(Vector(-23, 16, 8)), Angle(0, 270, 2), Vector(0, 80, 0), true)
+		self:CreateSeat(Vector(Vector(-6, -16, 8)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 
 		-- Front left
 		self:CreateWheel(Vector(62.384399414063, 35.062900543213, 22), {
