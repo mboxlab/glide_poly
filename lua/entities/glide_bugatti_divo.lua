@@ -1,6 +1,6 @@
 AddCSLuaFile()
 ENT.Type = "anim"
-ENT.Base = "base_glide_car"
+ENT.Base = "glide_meteor_car"
 ENT.Author = "kekobka"
 ENT.PrintName = "Bugatti Divo"
 
@@ -37,7 +37,7 @@ if SERVER then
 	function ENT:InitializePhysics()
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)
-		self:PhysicsInit(SOLID_VPHYSICS)
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(5, 0, 10))
 	end
 
 	function ENT:CreateFeatures()
@@ -55,10 +55,6 @@ if SERVER then
 		self:SetMinRPMTorque(10000)
 		self:SetMaxRPMTorque(16000)
 
-		self:SetForwardTractionMax(12000)
-		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(2700)
-
 		self:CreateSeat(Vector(Vector(-18, 19, 10)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(2, -19.5, 12), Angle(0, 270, 18), Vector(0, -80, 0), true)
 		-- Front left
@@ -67,6 +63,7 @@ if SERVER then
 			modelAngle = Angle(0, 0, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 3, E = 0.992},
 		})
 
 		-- Front right
@@ -75,15 +72,24 @@ if SERVER then
 			modelAngle = Angle(0, 180, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 3, E = 0.992},
 		})
 
 		-- Rear left
-		self:CreateWheel(Vector(-62.358898162842, 39.030700683594, 23),
-		                 {model = "models/simpoly/wheels/bugatti_divo.mdl", modelAngle = Angle(0, 0, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-62.358898162842, 39.030700683594, 23), {
+			model = "models/simpoly/wheels/bugatti_divo.mdl",
+			modelAngle = Angle(0, 0, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 3, E = 0.992},
+		})
 
 		-- Rear right
-		self:CreateWheel(Vector(-62.358898162842, -39.030700683594, 23),
-		                 {model = "models/simpoly/wheels/bugatti_divo.mdl", modelAngle = Angle(0, 180, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-62.358898162842, -39.030700683594, 23), {
+			model = "models/simpoly/wheels/bugatti_divo.mdl",
+			modelAngle = Angle(0, 180, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 3, E = 0.992},
+		})
 
 		self:ChangeWheelRadius(16.7)
 	end

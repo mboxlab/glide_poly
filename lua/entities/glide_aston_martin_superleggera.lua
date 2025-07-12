@@ -1,6 +1,6 @@
 AddCSLuaFile()
 ENT.Type = "anim"
-ENT.Base = "base_glide_car"
+ENT.Base = "glide_meteor_car"
 ENT.Author = "kekobka"
 ENT.PrintName = "Aston Martin Superleggera"
 
@@ -43,7 +43,7 @@ if SERVER then
 	function ENT:InitializePhysics()
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)
-		self:PhysicsInit(SOLID_VPHYSICS)
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(5, 0, 10))
 	end
 
 	function ENT:CreateFeatures()
@@ -60,10 +60,6 @@ if SERVER then
 		self:SetMinRPMTorque(5000)
 		self:SetMaxRPMTorque(8800)
 
-		self:SetForwardTractionMax(4500)
-		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(3700)
-
 		self:CreateSeat(Vector(Vector(-23, 17, 10)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(-8, -17.5, 12), Angle(0, 270, 18), Vector(0, -80, 0), true)
 		self:CreateSeat(Vector(-30, -17.5, 12), Angle(0, 270, 18), Vector(0, -80, 0), true)
@@ -74,6 +70,7 @@ if SERVER then
 			modelAngle = Angle(0, 0, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
 		})
 
 		-- Front right
@@ -82,15 +79,24 @@ if SERVER then
 			modelAngle = Angle(0, 180, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
 		})
 
 		-- Rear left
-		self:CreateWheel(Vector(-62.117198944092, 37.694301605225, 23),
-		                 {model = "models/simpoly/wheels/aston_martin_superleggera.mdl", modelAngle = Angle(0, 0, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-62.117198944092, 37.694301605225, 23), {
+			model = "models/simpoly/wheels/aston_martin_superleggera.mdl",
+			modelAngle = Angle(0, 0, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		-- Rear right
-		self:CreateWheel(Vector(-62.117198944092, -37.694301605225, 23),
-		                 {model = "models/simpoly/wheels/aston_martin_superleggera.mdl", modelAngle = Angle(0, 180, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-62.117198944092, -37.694301605225, 23), {
+			model = "models/simpoly/wheels/aston_martin_superleggera.mdl",
+			modelAngle = Angle(0, 180, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		self:ChangeWheelRadius(16)
 	end

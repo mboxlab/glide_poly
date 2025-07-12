@@ -1,6 +1,6 @@
 AddCSLuaFile()
 ENT.Type = "anim"
-ENT.Base = "base_glide_car"
+ENT.Base = "glide_meteor_car"
 ENT.Author = "kekobka"
 ENT.PrintName = "Flanker F"
 
@@ -43,7 +43,7 @@ if SERVER then
 	function ENT:InitializePhysics()
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)
-		self:PhysicsInit(SOLID_VPHYSICS)
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(5, 0, 10))
 	end
 
 	function ENT:CreateFeatures()
@@ -61,15 +61,16 @@ if SERVER then
 		self:SetMinRPMTorque(5900)
 		self:SetMaxRPMTorque(9000)
 
-		self:SetForwardTractionMax(5500)
-		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(2700)
-
 		self:CreateSeat(Vector(Vector(-23, 18, 11)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(-5, -18.5, 12), Angle(0, 270, 18), Vector(0, -80, 0), true)
 		-- Front left
-		self:CreateWheel(Vector(60.444499969482, 39.663898468018, 23),
-		                 {model = "models/simpoly/wheels/flanker_f.mdl", modelAngle = Angle(0, 0, 0), modelScale = Vector(1, 0.4, 1), steerMultiplier = 1})
+		self:CreateWheel(Vector(60.444499969482, 39.663898468018, 23), {
+			model = "models/simpoly/wheels/flanker_f.mdl",
+			modelAngle = Angle(0, 0, 0),
+			modelScale = Vector(1, 0.4, 1),
+			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		-- Front right
 		self:CreateWheel(Vector(60.444499969482, -39.663898468018, 23), {
@@ -77,15 +78,24 @@ if SERVER then
 			modelAngle = Angle(0, 180, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
 		})
 
 		-- Rear left
-		self:CreateWheel(Vector(-60.444499969482, 39.663898468018, 23),
-		                 {model = "models/simpoly/wheels/flanker_f.mdl", modelAngle = Angle(0, 0, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-60.444499969482, 39.663898468018, 23), {
+			model = "models/simpoly/wheels/flanker_f.mdl",
+			modelAngle = Angle(0, 0, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		-- Rear right
-		self:CreateWheel(Vector(-60.444499969482, -39.663898468018, 23),
-		                 {model = "models/simpoly/wheels/flanker_f.mdl", modelAngle = Angle(0, 180, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-60.444499969482, -39.663898468018, 23), {
+			model = "models/simpoly/wheels/flanker_f.mdl",
+			modelAngle = Angle(0, 180, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		self:ChangeWheelRadius(16)
 	end

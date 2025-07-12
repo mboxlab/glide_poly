@@ -1,6 +1,6 @@
 AddCSLuaFile()
 ENT.Type = "anim"
-ENT.Base = "base_glide_car"
+ENT.Base = "glide_meteor_car"
 ENT.Author = "kekobka"
 ENT.PrintName = "Mercedes Benz 190e"
 
@@ -36,14 +36,13 @@ if CLIENT then
 end
 
 if SERVER then
-	ENT.ChassisMass = 1700
+	ENT.ChassisMass = 1200
 	ENT.SpawnPositionOffset = Vector(0, 0, 15)
-	ENT.BurnoutForce = 35
 
 	function ENT:InitializePhysics()
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)
-		self:PhysicsInit(SOLID_VPHYSICS)
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(5, 0, 10))
 	end
 
 	function ENT:CreateFeatures()
@@ -53,16 +52,12 @@ if SERVER then
 		self:SetSpringStrength(1500)
 		self:SetSteerConeMaxSpeed(1200)
 
-		self:SetDifferentialRatio(0.7)
+		self:SetDifferentialRatio(0.5)
 		self:SetPowerDistribution(-1)
 		self:SetMinRPM(1000)
 		self:SetMaxRPM(8500)
 		self:SetMinRPMTorque(5000)
 		self:SetMaxRPMTorque(8800)
-
-		self:SetForwardTractionMax(4500)
-		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(3700)
 
 		self:CreateSeat(Vector(Vector(-18, 17, 13)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(2, -17.5, 15), Angle(0, 270, 18), Vector(0, -80, 0), true)

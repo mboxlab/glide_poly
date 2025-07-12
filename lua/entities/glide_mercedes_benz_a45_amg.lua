@@ -1,6 +1,6 @@
 AddCSLuaFile()
 ENT.Type = "anim"
-ENT.Base = "base_glide_car"
+ENT.Base = "glide_meteor_car"
 ENT.Author = "kekobka"
 ENT.PrintName = "Mercedes Benz A45 AMG"
 
@@ -43,7 +43,7 @@ if SERVER then
 	function ENT:InitializePhysics()
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)
-		self:PhysicsInit(SOLID_VPHYSICS)
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(5, 0, 10))
 	end
 
 	function ENT:CreateFeatures()
@@ -57,12 +57,8 @@ if SERVER then
 		self:SetPowerDistribution(0.9)
 		self:SetMinRPM(750)
 		self:SetMaxRPM(6500)
-		self:SetMinRPMTorque(4200)
-		self:SetMaxRPMTorque(6300)
-
-		self:SetForwardTractionMax(4500)
-		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(2700)
+		self:SetMinRPMTorque(3200)
+		self:SetMaxRPMTorque(4300)
 
 		self:CreateSeat(Vector(Vector(-13, 17, 18)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(8, -17.5, 18), Angle(0, 270, 18), Vector(0, -80, 0), true)
@@ -75,6 +71,7 @@ if SERVER then
 			modelAngle = Angle(0, 0, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
 		})
 
 		-- Front right
@@ -83,15 +80,24 @@ if SERVER then
 			modelAngle = Angle(0, 180, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
 		})
 
 		-- Rear left
-		self:CreateWheel(Vector(-62.83810043335, 34.87850189209, 23),
-		                 {model = "models/simpoly/wheels/mercedes_benz_a45_amg.mdl", modelAngle = Angle(0, 0, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-62.83810043335, 34.87850189209, 23), {
+			model = "models/simpoly/wheels/mercedes_benz_a45_amg.mdl",
+			modelAngle = Angle(0, 0, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		-- Rear right
-		self:CreateWheel(Vector(-62.83810043335, -34.87850189209, 23),
-		                 {model = "models/simpoly/wheels/mercedes_benz_a45_amg.mdl", modelAngle = Angle(0, 180, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-62.83810043335, -34.87850189209, 23), {
+			model = "models/simpoly/wheels/mercedes_benz_a45_amg.mdl",
+			modelAngle = Angle(0, 180, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		self:ChangeWheelRadius(15.3)
 	end

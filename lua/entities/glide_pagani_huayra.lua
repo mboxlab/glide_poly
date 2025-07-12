@@ -1,6 +1,6 @@
 AddCSLuaFile()
 ENT.Type = "anim"
-ENT.Base = "base_glide_car"
+ENT.Base = "glide_meteor_car"
 ENT.Author = "kekobka"
 ENT.PrintName = "Pagani Huayra"
 
@@ -43,7 +43,7 @@ if SERVER then
 	function ENT:InitializePhysics()
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)
-		self:PhysicsInit(SOLID_VPHYSICS)
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(5, 0, 10))
 	end
 
 	function ENT:CreateFeatures()
@@ -61,10 +61,6 @@ if SERVER then
 		self:SetMinRPMTorque(13000)
 		self:SetMaxRPMTorque(19000)
 
-		self:SetForwardTractionMax(12500)
-		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(2700)
-
 		self:CreateSeat(Vector(Vector(0, 15, 8)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(15, -15.5, 10), Angle(0, 270, 18), Vector(0, -80, 0), true)
 		-- Front left
@@ -73,6 +69,7 @@ if SERVER then
 			modelAngle = Angle(0, 0, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 3, E = 0.992},
 		})
 
 		-- Front right
@@ -81,15 +78,24 @@ if SERVER then
 			modelAngle = Angle(0, 180, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 3, E = 0.992},
 		})
 
 		-- Rear left
-		self:CreateWheel(Vector(-65.072601318359, 40.466499328613, 23),
-		                 {model = "models/simpoly/wheels/pagani_huayra.mdl", modelAngle = Angle(0, 0, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-65.072601318359, 40.466499328613, 23), {
+			model = "models/simpoly/wheels/pagani_huayra.mdl",
+			modelAngle = Angle(0, 0, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 30, C = 1.15, D = 3, E = 0},
+		})
 
 		-- Rear right
-		self:CreateWheel(Vector(-65.072601318359, -40.466499328613, 23),
-		                 {model = "models/simpoly/wheels/pagani_huayra.mdl", modelAngle = Angle(0, 180, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-65.072601318359, -40.466499328613, 23), {
+			model = "models/simpoly/wheels/pagani_huayra.mdl",
+			modelAngle = Angle(0, 180, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 30, C = 1.15, D = 3, E = 0},
+		})
 
 		self:ChangeWheelRadius(15.7)
 	end

@@ -1,6 +1,6 @@
 AddCSLuaFile()
 ENT.Type = "anim"
-ENT.Base = "base_glide_car"
+ENT.Base = "glide_meteor_car"
 ENT.Author = "kekobka"
 ENT.PrintName = "Ferrari 488 pista"
 
@@ -37,7 +37,7 @@ if SERVER then
 	function ENT:InitializePhysics()
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)
-		self:PhysicsInit(SOLID_VPHYSICS)
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(5, 0, 10))
 	end
 
 	function ENT:CreateFeatures()
@@ -52,12 +52,8 @@ if SERVER then
 		self:SetPowerDistribution(-1)
 		self:SetMinRPM(750)
 		self:SetMaxRPM(10000)
-		self:SetMinRPMTorque(9900)
-		self:SetMaxRPMTorque(12000)
-
-		self:SetForwardTractionMax(8500)
-		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(2700)
+		self:SetMinRPMTorque(5900)
+		self:SetMaxRPMTorque(7000)
 
 		self:CreateSeat(Vector(Vector(-13, 17, 8)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(2, -17.5, 8), Angle(0, 270, 18), Vector(0, -80, 0), true)
@@ -67,6 +63,7 @@ if SERVER then
 			modelAngle = Angle(0, 0, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
 		})
 
 		-- Front right
@@ -75,15 +72,24 @@ if SERVER then
 			modelAngle = Angle(0, 180, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
 		})
 
 		-- Rear left
-		self:CreateWheel(Vector(-58.363800048828, 37.698799133301, 23),
-		                 {model = "models/simpoly/wheels/ferrari_488_pista.mdl", modelAngle = Angle(0, 0, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-58.363800048828, 37.698799133301, 23), {
+			model = "models/simpoly/wheels/ferrari_488_pista.mdl",
+			modelAngle = Angle(0, 0, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		-- Rear right
-		self:CreateWheel(Vector(-58.363800048828, -37.698799133301, 23),
-		                 {model = "models/simpoly/wheels/ferrari_488_pista.mdl", modelAngle = Angle(0, 180, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-58.363800048828, -37.698799133301, 23), {
+			model = "models/simpoly/wheels/ferrari_488_pista.mdl",
+			modelAngle = Angle(0, 180, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		self:ChangeWheelRadius(15.2)
 	end

@@ -1,6 +1,6 @@
 AddCSLuaFile()
 ENT.Type = "anim"
-ENT.Base = "base_glide_car"
+ENT.Base = "glide_meteor_car"
 ENT.Author = "kekobka"
 ENT.PrintName = "Bentley Continental GT"
 
@@ -37,7 +37,7 @@ if SERVER then
 	function ENT:InitializePhysics()
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)
-		self:PhysicsInit(SOLID_VPHYSICS)
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(5, 0, 10))
 	end
 
 	function ENT:CreateFeatures()
@@ -54,9 +54,9 @@ if SERVER then
 		self:SetMinRPMTorque(6000)
 		self:SetMaxRPMTorque(8800)
 
-		self:SetForwardTractionMax(4500)
-		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(2700)
+		 
+		 
+		 
 
 		self:CreateSeat(Vector(Vector(-28, 17, 13)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(-8, -17.5, 12), Angle(0, 270, 18), Vector(0, -80, 0), true)

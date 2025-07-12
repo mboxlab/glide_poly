@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 ENT.Type = "anim"
-ENT.Base = "base_glide_car"
+ENT.Base = "glide_meteor_car"
 ENT.PrintName = "Volvo VNL"
 
 ENT.GlideCategory = "Poly - Truck"
@@ -40,7 +40,7 @@ if CLIENT then
 end
 
 if SERVER then
-	ENT.SpawnPositionOffset = Vector(0, 0, 50)
+	ENT.SpawnPositionOffset = Vector(0, 0, 10)
 	ENT.ChassisMass = 4000
 	ENT.IsHeavyVehicle = true
 
@@ -52,7 +52,7 @@ if SERVER then
 	function ENT:InitializePhysics()
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)
-		self:PhysicsInit(SOLID_VPHYSICS, Vector(90, 0, 35))
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(90, 0, 5))
 	end
 
 	ENT.AirControlForce = Vector(0.1, 0.05, 0.1) -- Roll, pitch, yaw
@@ -81,10 +81,10 @@ if SERVER then
 		self:SetSpringStrength(1900)
 		self:SetSpringDamper(8000)
 
-		self:SetSideTractionMultiplier(90)
-		self:SetForwardTractionMax(6000)
-		self:SetSideTractionMax(4000)
-		self:SetSideTractionMin(5500)
+		 
+		 
+		 
+		 
 
 		self:SetDifferentialRatio(1.3)
 		self:SetPowerDistribution(-0.7)

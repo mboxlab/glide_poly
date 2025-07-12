@@ -1,6 +1,6 @@
 AddCSLuaFile()
 ENT.Type = "anim"
-ENT.Base = "base_glide_car"
+ENT.Base = "glide_meteor_car"
 ENT.Author = "kekobka"
 ENT.PrintName = "MINI Cooper"
 
@@ -41,7 +41,7 @@ if SERVER then
 	function ENT:InitializePhysics()
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)
-		self:PhysicsInit(SOLID_VPHYSICS)
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(5, 0, 10))
 	end
 
 	function ENT:CreateFeatures()
@@ -56,18 +56,19 @@ if SERVER then
 		self:SetPowerDistribution(0.9)
 		self:SetMinRPM(750)
 		self:SetMaxRPM(6500)
-		self:SetMinRPMTorque(5200)
-		self:SetMaxRPMTorque(8300)
-
-		self:SetForwardTractionMax(4500)
-		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(2700)
+		self:SetMinRPMTorque(3200)
+		self:SetMaxRPMTorque(4300)
 
 		self:CreateSeat(Vector(Vector(-28, 17, 18)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(-8, -17.5, 18), Angle(0, 270, 18), Vector(0, -80, 0), true)
 		-- Front left
-		self:CreateWheel(Vector(57.027801513672, 34.384601593018, 23),
-		                 {model = "models/simpoly/wheels/minicooper.mdl", modelAngle = Angle(0, 0, 0), modelScale = Vector(1, 0.4, 1), steerMultiplier = 1})
+		self:CreateWheel(Vector(57.027801513672, 34.384601593018, 23), {
+			model = "models/simpoly/wheels/minicooper.mdl",
+			modelAngle = Angle(0, 0, 0),
+			modelScale = Vector(1, 0.4, 1),
+			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		-- Front right
 		self:CreateWheel(Vector(57.027801513672, -34.384601593018, 23), {
@@ -75,15 +76,24 @@ if SERVER then
 			modelAngle = Angle(0, 180, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
 		})
 
 		-- Rear left
-		self:CreateWheel(Vector(-57.036098480225, 34.384601593018, 23),
-		                 {model = "models/simpoly/wheels/minicooper.mdl", modelAngle = Angle(0, 0, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-57.036098480225, 34.384601593018, 23), {
+			model = "models/simpoly/wheels/minicooper.mdl",
+			modelAngle = Angle(0, 0, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		-- Rear right
-		self:CreateWheel(Vector(-57.036098480225, -34.384601593018, 23),
-		                 {model = "models/simpoly/wheels/minicooper.mdl", modelAngle = Angle(0, 180, 0), modelScale = Vector(1, 0.4, 1)})
+		self:CreateWheel(Vector(-57.036098480225, -34.384601593018, 23), {
+			model = "models/simpoly/wheels/minicooper.mdl",
+			modelAngle = Angle(0, 180, 0),
+			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 2, E = 0.992},
+		})
 
 		self:ChangeWheelRadius(15.3)
 	end

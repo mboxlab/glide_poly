@@ -1,6 +1,6 @@
 AddCSLuaFile()
 ENT.Type = "anim"
-ENT.Base = "base_glide_car"
+ENT.Base = "glide_meteor_car"
 ENT.Author = "kekobka"
 ENT.PrintName = "Lamborghini Huracan Roadster"
 
@@ -37,7 +37,7 @@ if SERVER then
 	function ENT:InitializePhysics()
 		self:SetSolid(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)
-		self:PhysicsInit(SOLID_VPHYSICS)
+		self:PhysicsInit(SOLID_VPHYSICS, Vector(5, 0, 10))
 	end
 
 	function ENT:CreateFeatures()
@@ -56,10 +56,6 @@ if SERVER then
 		self:SetMinRPMTorque(10200)
 		self:SetMaxRPMTorque(16300)
 
-		self:SetForwardTractionMax(8500)
-		self:SetSideTractionMultiplier(25)
-		self:SetSideTractionMax(6700)
-
 		self:CreateSeat(Vector(Vector(-13, 18, 5)), Angle(0, 270, 2), Vector(0, 80, 0), true)
 		self:CreateSeat(Vector(10, -18.5, 5), Angle(0, 270, 18), Vector(0, -80, 0), true)
 		-- Front left
@@ -68,6 +64,7 @@ if SERVER then
 			modelAngle = Angle(0, 0, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 3, E = 0.992}
 		})
 
 		-- Front right
@@ -76,6 +73,7 @@ if SERVER then
 			modelAngle = Angle(0, 180, 0),
 			modelScale = Vector(1, 0.4, 1),
 			steerMultiplier = 1,
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 3, E = 0.992}
 		})
 
 		-- Rear left
@@ -83,6 +81,7 @@ if SERVER then
 			model = "models/simpoly/wheels/lamborghini_aventador_lp_750_4_super_veloce_roadster.mdl",
 			modelAngle = Angle(0, 0, 0),
 			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 3, E = 0.992}
 		})
 
 		-- Rear right
@@ -90,6 +89,7 @@ if SERVER then
 			model = "models/simpoly/wheels/lamborghini_aventador_lp_750_4_super_veloce_roadster.mdl",
 			modelAngle = Angle(0, 180, 0),
 			modelScale = Vector(1, 0.4, 1),
+			longitudinalFrictionPreset = {B = 10.86, C = 2.15, D = 3, E = 0.992}
 		})
 
 		self:ChangeWheelRadius(15.1)
