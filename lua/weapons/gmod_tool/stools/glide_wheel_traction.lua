@@ -64,17 +64,16 @@ if SERVER then
 	local function ApplyWheelParameters(wheel, params)
 
 		wheel.params.longitudinalFrictionPreset = {
-			B = ValidateNumber(params.long_b, 0.1, 5, 18),
-			C = ValidateNumber(params.long_c, 0.1, 5, 1.5),
-			D = ValidateNumber(params.long_d, 0.1, 5, 1.5),
-			E = ValidateNumber(params.long_e, 0.1, 5, 0.3),
+			B = ValidateNumber(params.long_b, 0, 30, 18),
+			C = ValidateNumber(params.long_c, 0, 5, 1.5),
+			D = ValidateNumber(params.long_d, 0, 30, 1.5),
+			E = ValidateNumber(params.long_e, -5, 5, 0.3),
 		}
-
 		wheel.params.lateralFrictionPreset = {
-			B = ValidateNumber(params.lat_b, 0.1, 5, 12),
-			C = ValidateNumber(params.lat_c, 0.1, 5, 1.3),
-			D = ValidateNumber(params.lat_d, 0.1, 5, 1.8),
-			E = ValidateNumber(params.lat_e, 0.1, 5, -1.8),
+			B = ValidateNumber(params.lat_b, 0, 30, 18),
+			C = ValidateNumber(params.lat_c, 0, 5, 1.5),
+			D = ValidateNumber(params.lat_d, 0, 30, 1.5),
+			E = ValidateNumber(params.lat_e, -5, 5, 0.3),
 		}
 	end
 
